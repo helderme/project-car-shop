@@ -1,12 +1,13 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { CarWithVehicleSchema } from '../../../interfaces/ICar';
 import CarModel from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
 import { carMock, carMockWithId } from '../mocks/carMocks';
 
 describe('Car Service', () => {
   const carModel = new CarModel()
-	const carService = new CarService(carModel)
+	const carService = new CarService(carModel, CarWithVehicleSchema)
 
   before(() => {
 		sinon.stub(carModel, 'create').resolves(carMockWithId);

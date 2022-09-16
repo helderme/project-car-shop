@@ -2,13 +2,14 @@ import { expect } from 'chai';
 import { Request, Response } from 'express';
 import sinon from 'sinon';
 import CarController from '../../../controllers/CarController';
+import { CarWithVehicleSchema } from '../../../interfaces/ICar';
 import CarModel from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
 import { carMock, carMockWithId } from '../mocks/carMocks';
 
 describe('Car Controller', () => {
   const carModel = new CarModel()
-	const carService = new CarService(carModel)
+	const carService = new CarService(carModel, CarWithVehicleSchema)
 	const carController = new CarController(carService)
 	
 	const req= {} as Request;
